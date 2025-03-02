@@ -8,7 +8,12 @@ import { FaInstagram } from "react-icons/fa";
 
 import profileImg from "../assets/man.png";
 
+import userOne from "../assets/user1.png";
+import userTwo from "../assets/user2.png";
+import userThree from "../assets/user3.png";
+
 function Home() {
+
   const socialLinks = [
     { icon: <FaFacebookF />, href: "#" },
     { icon: <FaTwitter />, href: "#" },
@@ -20,6 +25,28 @@ function Home() {
     { label: "Email", value: "beverly@gmail.com" },
     { label: "Phone", value: "+1-541-754-3010" },
   ];
+
+  const blogPosts = [
+    {
+      author: "Jason Statham",
+      title: "4 Reasons to Leverage DIY Website Builders",
+      date: "February 12, 2024",
+      image: userOne, 
+    },
+    {
+      author: "Anna Tester",
+      title: "10 Website Fails Your Business Is Making",
+      date: "February 11, 2024",
+      image: userTwo, 
+    },
+    {
+      author: "Fred Benson",
+      title: "Instagram Feed Add To Your WordPress Site",
+      date: "February 10, 2024",
+      image: userThree, 
+    },
+  ];
+
   return (
     <>
       <Header />
@@ -85,6 +112,31 @@ function Home() {
           <div></div>
         </div>
       </div>
+
+      <div className="mb-[30px]">
+        <div className="container">
+          <div className="text-center mb-[35px]">
+            <p className="mb-[12px] text-[#04c37f] text-base">Our Blogs</p>
+            <h4 className="text-[22px] leading-[120%] text-[#0b1b2a] font-bold">Read Our Latest Blog</h4>
+          </div>
+          <div className="flex flex-col items-center justify-between gap-y-[30px] xl:flex-row xl:gap-x-[24px] flex-nowrap">
+          {blogPosts.map(post => (
+               <div key={post} className="max-w-[516px] xl:w-1/3 xl:max-w-[416px] p-[1px] bg-gradient-to-t from-[#FAC544] to-[#04c37f] rounded-lg">
+                <div className="bg-white py-[45px] px-[30px] rounded-lg">
+                  <div className="flex flex-row items-center mb-[20px]">
+                    <img src={post.image} alt="" />
+                    <h3 className="ml-[15px] text-[20px] font-semibold text-[#0b1b2a]">{post.author}</h3>
+                  </div>
+                  <h2 className="text-[30px] text-black leading-[150%] font-semibold hover:text-[#04c37f] mb-[15px] cursor-pointer transition-all duration-500">{post.title}</h2>
+                  <p className="text-base font-normal text-[#04c37f] leading-[150%]">{post.date}</p>
+                </div>
+               </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      
 
       <Footer />
     </>
