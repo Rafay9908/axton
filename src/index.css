@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+.container {
+    width: 90%;
+    max-width: 1296px;
+    margin: 0 auto;
+}
+
 .poppins {
     font-family: "Poppins", sans-serif;
 }
