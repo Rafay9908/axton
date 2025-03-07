@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -21,7 +21,16 @@ import { FaArrowRight } from "react-icons/fa6";
 
 import { SiTicktick } from "react-icons/si";
 
+import imgOne from '../assets/1.png'
+import imgTwo from '../assets/2.png'
+import imgThree from '../assets/3.png'
+import imgFour from '../assets/4.png'
+import imgFive from '../assets/5.png'
+import imgSix from '../assets/6.png'
+
 function Home() {
+  const [isYearly, setIsYearly] = useState(false);
+
   const socialLinks = [
     { icon: <FaFacebookF />, href: "#" },
     { icon: <FaTwitter />, href: "#" },
@@ -33,6 +42,8 @@ function Home() {
     { label: "Email", value: "beverly@gmail.com" },
     { label: "Phone", value: "+1-541-754-3010" },
   ];
+
+  const clientImages = [imgOne, imgTwo, imgThree, imgFour, imgFive, imgSix];
 
   const blogPosts = [
     {
@@ -65,9 +76,10 @@ function Home() {
   const pricingPlans = [
     {
       type: "Full Time",
-      price: 1000,
-      billingCycle: "/Monthly",
-      description: "You can check out my pricing plan if you want to work with me",
+      price: isYearly? "10000" : "1000",
+      billingCycle: isYearly? "/Yearly" : "/Monthly",
+      description:
+        "You can check out my pricing plan if you want to work with me",
       features: [
         "Product Design",
         "Landing Pages",
@@ -80,9 +92,10 @@ function Home() {
     },
     {
       type: "Hourly",
-      price: 100,
-      billingCycle: "/Monthly",
-      description: "You can check out my pricing plan if you want to work with me",
+      price: isYearly? "1000" : "100",
+      billingCycle: isYearly? "/Yearly" : "/Monthly",
+      description:
+        "You can check out my pricing plan if you want to work with me",
       features: [
         "Product Design",
         "Landing Pages",
@@ -161,6 +174,27 @@ function Home() {
         </div>
       </div>
 
+      <div className="">
+        <div className="container">
+          <div className="bg-[#0B1B2A] py-[120px] px-[100px] rounded-full flex justify-between h-[365px]">
+            <div>
+              <p className="text-[#04c37f] text-base font-normal leading-[150%] mb-[12px]">My Clients</p>
+              <h3 className="text-white text-4xl leading-[125%] font-medium">Awesome  <br />Clients</h3>
+            </div>
+
+            <div className="grid grid-cols-3 gap-y-[70px] gap-x-[80px]">
+              {clientImages.map((image) => (
+                <img className="cursor-pointer brightness-50 transition-all duration-500 hover:brightness-100" key={image} src={image} alt="#" />
+              ))}
+            </div>
+          </div>
+
+
+
+          
+        </div>
+      </div>
+
       <div className="my-[120px]">
         <div className="container">
           <div className="flex flex-col xl:flex-row xl:items-center justify-between mb-[35px]">
@@ -168,11 +202,11 @@ function Home() {
               <p className="text-base font-normal text-[#0bc37f] leading-[150%] mb-[12px]">
                 Services we Provide
               </p>
-              <h3 className="text-[32px] xl:text-[35px] text-[#0B1B2A] font-bold xl:leading-[53px]">
+              <h3 className="text-[22px] xl:text-[35px] text-[#0B1B2A] font-bold xl:leading-[53px] my-[12px]">
                 Best Quality Service <br /> We Provide
               </h3>
             </div>
-            <p className="text-[#888C8F] text-[15px] xl:text-[18px] font-normal leading-[32px] xl:w-[50%] w-[70%]">
+            <p className="text-[#888C8F] text-[15px] xl:text-[18px] font-normal leading-[32px] xl:w-[50%] w-[100%]">
               Nulla quis lorem ut libero malesuada feugiat. Vestibulum ac diam
               sit amet quam vehicula elementum sed sit amet dui. Donec rutrum
               congue leo eget malesuada.
@@ -210,37 +244,78 @@ function Home() {
           </div>
 
           <div>
-          <div className="flex justify-between flex-row items-center pt-[120px]">
-            <div className="w-[40%]">
-              <p className="text-base font-normal text-[#0bc37f] leading-[150%] mb-[12px]">
-              Pricing Plan
-              </p>
-              <h3 className="text-[32px] xl:text-[35px] text-[#0B1B2A] font-bold xl:leading-[53px]">
-              You Can Check Out My Pricing Plan If You Want To Work
-              </h3>
-            </div>
-            
-            <div className="flex">
-              {pricingPlans.map((pricingPlan) => (
-                <div className="bg-[#0B1B2A] py-[38px] px-[45px]" key={pricingPlan}>
-                  <div>
-                    <p className="text-[15px] xl:text-[20px] text-white font-semibold">{pricingPlan.type}</p>
-                    <p className="text-[25px] xl:text-[36px] text-[#0bc37f] font-bold leading-[150%] flex">{pricingPlan.price} <span className="text-[12px] xl:text-[18px] text-white font-normal pl-[10px]">{pricingPlan.billingCycle}</span></p>
-                    <p className="text-lg font-normal leading-[170%] text-white mb-[16px]">{pricingPlan.description}</p>
+            <div className="flex justify-between flex-col xl:flex-row items-center pt-[120px]">
+              <div className="w-[100%] xl:w-[40%] mb-[30px] xl:mb-[0px]">
+                <p className="text-base font-normal text-[#0bc37f] leading-[150%] mb-[12px]">
+                  Pricing Plan
+                </p>
+                <h3 className="text-[32px] xl:text-[35px] text-[#0B1B2A] font-bold xl:leading-[53px]">
+                  You Can Check Out My Pricing Plan If You Want To Work
+                </h3>
+                <div className="flex gap-x-[16px] mt-[20px]">
+                  <p className={`text-lg font-normal leading-[150%] ${isYearly? 'text-black' : 'text-[#0bc37f]'}`}>Monthly</p>
+                  <div
+                    className={`relative w-14 h-7 flex items-center rounded-full cursor-pointer transition-all duration-300 border border-[#0bc37f] bg-white`}
+                    onClick={() => setIsYearly(!isYearly)}
+                  >
+                    {/* Circle */}
+                    <div
+                      className={`absolute bg-[#0bc37f] w-5 h-5 rounded-full shadow-md transition-all duration-300 transform ${
+                        isYearly ? "translate-x-7" : "translate-x-1"
+                      }`}
+                    ></div>
                   </div>
-                  <ul className="mb-[50px]">
-                    {pricingPlan.features.map((feature) => (
-                      <li key={feature} className="flex items-center flex-row mb-[22px] text-[#dfdfdf] font-normal text-base"><span className="pr-[10px] text-[#0bc37f]"><SiTicktick /></span> {feature}</li>
-                    ))}
-                  </ul>
-                  <a href="#" className="py-[15px] px-[35px] bg-[#0bc37f] text-[18px] rounded-[30px] font-medium text-white">{pricingPlan.buttonText}</a>
+                  <p className={`text-lg font-normal leading-[150%] ${isYearly? 'text-[#0bc37f]' : 'text-black'}`}>Yearly</p>
                 </div>
-              ))}
-            </div>
+              </div>
 
+              <div className="flex flex-col xl:flex-row">
+                {pricingPlans.map((pricingPlan, i) => (
+                  <div
+                    className={`mb-[30px] xl:mb-[0px] bg-[#0B1B2A] py-[38px] px-[45px] ${
+                      i === 0 ? "border-r border-[#7B8692]" : ""
+                    }`}
+                    key={pricingPlan}
+                  >
+                    <div>
+                      <p className="text-[15px] xl:text-[20px] text-white font-semibold">
+                        {pricingPlan.type}
+                      </p>
+                      <p className="text-[25px] xl:text-[36px] text-[#0bc37f] font-bold leading-[150%] flex">
+                        {pricingPlan.price}{" "}
+                        <span className="text-[12px] xl:text-[18px] text-white font-normal pl-[10px]">
+                          {pricingPlan.billingCycle}
+                        </span>
+                      </p>
+                      <p className="text-lg font-normal leading-[170%] text-white mb-[16px]">
+                        {pricingPlan.description}
+                      </p>
+                    </div>
+                    <ul className="mb-[50px]">
+                      {pricingPlan.features.map((feature) => (
+                        <li
+                          key={feature}
+                          className="flex items-center flex-row mb-[22px] text-[#dfdfdf] font-normal text-base"
+                        >
+                          <span className="pr-[10px] text-[#0bc37f]">
+                            <SiTicktick />
+                          </span>{" "}
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href="#"
+                      className="py-[15px] px-[35px] bg-[#0bc37f] text-[18px] rounded-[30px] font-medium text-white hover:bg-[#0b1b2a] border border-[#0bc37f] transition-all duration-400"
+                    >
+                      {pricingPlan.buttonText}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-        </div>   
       </div>
 
       <div className="mb-[30px]">
@@ -251,8 +326,9 @@ function Home() {
               Read Our Latest Blog
             </h4>
           </div>
+
           <div className="flex flex-col items-center justify-between gap-y-[30px] xl:flex-row xl:gap-y-[0px] xl:gap-x-[24px] flex-nowrap">
-            {blogPosts.map((post) => (
+            {blogPosts.map((post, i) => (
               <div
                 key={post}
                 className="max-w-[516px] xl:w-1/3 xl:max-w-[416px] p-[1px] bg-gradient-to-t from-[#FAC544] to-[#04c37f] rounded-lg"
