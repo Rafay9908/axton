@@ -291,9 +291,9 @@ function Home() {
                 </div>
 
                 <div className="mt-[50px] w-[100%] lg:w-[60%] xl:w-[55%] lg:pl-[57.5px]">
-                  <div className="flex flex-row justify-between mb-[30px]">
-                    {personalInfo.map((info) => (
-                      <div key={info}>
+                  <div className="flex flex-col sm:flex-row justify-between mb-[30px]">
+                    {personalInfo.map((info, i) => (
+                      <div className={`sm:mb-[0px] ${i === personalInfo.length - 1? "mb-[0px]" : "mb-[30px]"}`} key={info}>
                         <h3 className="text-base leading-[150%] text-[#04c37f] mb-[12px]">
                           {info.label}
                         </h3>
