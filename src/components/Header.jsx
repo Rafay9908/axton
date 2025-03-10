@@ -18,15 +18,14 @@ function Header() {
     "About",
     "Services",
     "Projects",
-    "Client",
+    "Testimonials",
     "Pricing",
-    "Blog",
     "Contact",
   ];
 
   return (
     <>
-      <div className="shadow-[0px_5px_30px_rgba(0,0,0,0.1)]">
+      <div className="fixed top-0 left-0 w-full bg-white z-50 shadow-[0px_5px_30px_rgba(0,0,0,0.1)]">
         <div className="container relative">
           <div className="flex items-center justify-between py-[20px]">
             <a href="#">
