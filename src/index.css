@@ -9,3 +9,45 @@
 .poppins {
     font-family: "Poppins", sans-serif;
 }
+
+.portfolio-grid {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "one"
+      "two"
+      "three"
+      "four"
+      "five"
+      "six";
+  }
+  
+  
+  @media (min-width: 640px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        "one two"
+        "three four"
+        "five six";
+    }
+  }
+  
+ 
+  @media (min-width: 1024px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas:
+        "one one two three"
+        "four five five six";
+    }
+  }
+  
+  .portfolio-item {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 16px;
+  }
+  

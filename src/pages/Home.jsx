@@ -19,6 +19,13 @@ import { FaArrowRight } from "react-icons/fa6";
 
 import { SiTicktick } from "react-icons/si";
 
+import portfolioOne from "../assets/portfolio-1.jpg";
+import portfolioTwo from "../assets/portfolio-2.jpg";
+import portfolioThree from "../assets/portfolio-3.jpg";
+import portfolioFour from "../assets/portfolio-4.jpg";
+import portfolioFive from "../assets/portfolio-5.jpg";
+import portfolioSix from "../assets/portfolio-6.jpg";
+
 import imgOne from "../assets/1.png";
 import imgTwo from "../assets/2.png";
 import imgThree from "../assets/3.png";
@@ -29,9 +36,11 @@ import imgSix from "../assets/6.png";
 import signature from "../assets/signature.png";
 import about from "../assets/about.png";
 
-import call from "../assets/call.svg"
-import email from "../assets/email.svg"
-import address from "../assets/address.svg"
+import call from "../assets/call.svg";
+import email from "../assets/email.svg";
+import address from "../assets/address.svg";
+
+import testimonials from '../assets/testimonials.png'
 
 function Home() {
   const [isYearly, setIsYearly] = useState(false);
@@ -96,6 +105,15 @@ function Home() {
     },
   ];
 
+  const portfolioInfo = [
+    { image: portfolioOne, area: "one" },
+    { image: portfolioTwo, area: "two" },
+    { image: portfolioThree, area: "three" },
+    { image: portfolioFour, area: "four" },
+    { image: portfolioFive, area: "five" },
+    { image: portfolioSix, area: "six" },
+  ];
+
   const personalInfo = [
     {
       label: "Born In",
@@ -150,28 +168,28 @@ function Home() {
     {
       start: 0,
       end: 10,
-      duration: 2,
+      duration: 6,
       label: "Years of <br /> Experience",
       symbol: "+",
     },
     {
       start: 0,
       end: 784,
-      duration: 2.5,
+      duration: 6,
       label: "Project <br /> Completed",
       symbol: "",
     },
     {
       start: 0,
       end: 90,
-      duration: 2,
+      duration: 6,
       label: "Clients of <br /> Worldwide",
       symbol: "+",
     },
     {
       start: 0,
       end: 99,
-      duration: 2,
+      duration: 6,
       label: "Happy <br /> Clients",
       symbol: "%",
     },
@@ -182,26 +200,30 @@ function Home() {
       label: "Phone",
       value: "+1-541-754-3010",
       image: call,
+      href: "tel:+1-541-754-3010",
     },
     {
       label: "Email",
       value: "axton@gmail.com",
       image: email,
-
+      href: "mailto:axton@gmail.com",
     },
     {
       label: "Address",
       value: "432 Mechanic Road Riverside, NJ 08075",
       image: address,
-
+      href: "#",
     },
-  ]
+  ];
 
   return (
     <>
       <Header />
 
-      <div id="home" className="mt-[170px] mb-[250px] md:mb-[345px] xl:mb-[300px]">
+      <div
+        id="home"
+        className="mt-[170px] mb-[250px] md:mb-[345px] xl:mb-[300px]"
+      >
         <div className="container">
           <div className="flex flex-col xl:flex-row items-center justify-between">
             <div className="flex flex-col">
@@ -318,7 +340,14 @@ function Home() {
                 <div className="mt-[50px] w-[100%] lg:w-[60%] xl:w-[55%] lg:pl-[57.5px]">
                   <div className="flex flex-col sm:flex-row justify-between mb-[30px]">
                     {personalInfo.map((info, i) => (
-                      <div className={`sm:mb-[0px] ${i === personalInfo.length - 1? "mb-[0px]" : "mb-[30px]"}`} key={info}>
+                      <div
+                        className={`sm:mb-[0px] ${
+                          i === personalInfo.length - 1
+                            ? "mb-[0px]"
+                            : "mb-[30px]"
+                        }`}
+                        key={info}
+                      >
                         <h3 className="text-base leading-[150%] text-[#04c37f] mb-[12px]">
                           {info.label}
                         </h3>
@@ -398,9 +427,15 @@ function Home() {
                   {counterInfo.map((info, index) => (
                     <div
                       key={index}
-                      className={`flex flex-row items-center gap-x-5 pr-[20px] ${index === counterInfo.length - 1? "xl:pr-[0px] w-[235px] md:w-[222px] xl:w-auto" : "pr-[20px]"}`}
+                      className={`flex flex-row items-center gap-x-5 pr-[20px] ${
+                        index === counterInfo.length - 1
+                          ? "xl:pr-[0px] w-[235px] md:w-[222px] xl:w-auto"
+                          : "pr-[20px]"
+                      }`}
                     >
-                      <div className={`flex flex-row md:flex-col items-center justify-center text-green-500 font-bold text-[30px] md:text-[36px] leading-none bg-white py-[14px] px-[18px] rounded-full md:h-[108px] w-[107px] md:w-[80px]`}>
+                      <div
+                        className={`flex flex-row md:flex-col items-center justify-center text-green-500 font-bold text-[30px] md:text-[36px] leading-none bg-white py-[14px] px-[18px] rounded-full md:h-[108px] w-[107px] md:w-[80px]`}
+                      >
                         <span className="md:pb-2 pr-2">{info.symbol}</span>
                         <span className="md:rotate-[-90deg]">
                           <CountUp
@@ -441,7 +476,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="flex flex-col items-center xl:flex-row justify-between gap-x-[24px]">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-6">
             {services.map((service) => (
               <div
                 key={service}
@@ -462,18 +497,9 @@ function Home() {
               </div>
             ))}
           </div>
-          <div className="flex flex-row justify-center">
-            <a
-              href="#"
-              className="text-lg font-medium leading-[23px] text-[#0B1B2A] py-[15px] px-[35px] border-[1px] border-[#04c37f] rounded-[35px] mt-[20px] hover:bg-[#04c37f] hover:text-white transition-all duration-500"
-            >
-              View All Services
-            </a>
-          </div>
-
           <div>
             <div className="flex justify-between flex-col xl:flex-row items-center pt-[120px]">
-              <div className="w-[100%] xl:w-[40%] mb-[30px] xl:mb-[0px]">
+              <div className="w-[100%] xl:w-[40%] mb-[30px] xl:mb-[0px] md:pr-6">
                 <p className="text-base font-normal text-[#0bc37f] leading-[150%] mb-[12px]">
                   Pricing Plan
                 </p>
@@ -513,7 +539,9 @@ function Home() {
                 {pricingPlans.map((pricingPlan, i) => (
                   <div
                     className={`mb-[30px] xl:mb-[0px] bg-[#0B1B2A] py-[38px] px-[45px] ${
-                      i === 0 ? "border-r border-[#7B8692]" : ""
+                      i === 0
+                        ? "border-r xl:rounded-l-lg border-[#7B8692]"
+                        : "xl:rounded-r-lg"
                     }`}
                     key={pricingPlan}
                   >
@@ -558,36 +586,100 @@ function Home() {
         </div>
       </div>
 
-      <div className="py-[120px] bg-[#ECF1F9]">
+      <div id="portfolio" className="bg-[#ECF1F9] py-[120px]">
         <div className="container">
-        
-          <div className="flex flex-col lg:flex-row justify-between items-start">
-            <div className="w-[100%] lg:w-[26%] l:border-r-2 lg:border-[#E2D3CB] lg:pr-[40px]">
-            <h3 className="mb-[40px] text-[#0b1b2a] font-semibold text-[36px] leading-[43px]">Contact Info</h3>
-              {contactForm && contactForm?.map((info, i) => (
-                <div key={i} className={`flex items-start gap-x-4 ${i === contactForm.length - 1 ? "mb-[0px]" : "mb-[40px]"}`}>
-                  <img src={info.image} alt="" />
-                  <div>
-                    <p className="mb-[10px] text-[#04c37f] text-[20px] leading-[30px] font-semibold">{info.label}</p>
-                    <a href="#" className="text-[#3C4648] text-[18px] leading-[27px] font-normal hover:text-[#04c37f] transition-all duration-300">{info.value}</a>
-                  </div>
-                </div>
-              ))}
+          <div className="flex flex-col xl:flex-row xl:items-center justify-between mb-[35px]">
+            <div>
+              <p className="text-base font-normal text-[#0bc37f] leading-[150%] mb-[12px]">
+                My Portfolio
+              </p>
+              <h3 className="text-[22px] xl:text-[35px] text-[#0B1B2A] font-bold xl:leading-[53px] my-[12px]">
+                Best Quality Works That I <br /> Did For Clients
+              </h3>
             </div>
-
-            <div className="w-[100%] md:w-[74%] lg:pl-[70px]">
-              <p className="mb-[12px] text-[#04c37f] text-base leading-[150%] font-normal mt-[40px] lg:mt-[0px]">Contact Us</p>
-              <h3 className="mb-[35px] text-[#0b1b2a] text-[36px] leading-[43px] font-semibold">Have Questions? Get in Touch!</h3>
-
-              <Form />
-            </div>
-          
+            <p className="text-[#888C8F] text-[15px] xl:text-[18px] font-normal leading-[32px] xl:w-[50%] w-[100%]">
+              Nulla quis lorem ut libero malesuada feugiat. Vestibulum ac diam
+              sit amet quam vehicula elementum sed sit amet dui. Donec rutrum
+              congue leo eget malesuada.
+            </p>
           </div>
-          
+          <div className="portfolio-grid">
+            {portfolioInfo.map((project, i) => (
+              <div
+                key={i}
+                className="portfolio-item"
+                style={{ gridArea: project.area }}
+              >
+                <img
+                  src={project.image}
+                  alt="Project"
+                  className="rounded-[10px] w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
+      <div className="h-screen bg-center bg-no-repeat py-[120px]"
+      style={{backgroundImage: `url(${testimonials})`}}
+      >
+        <div className="container">
+          <div className="flex flex-col items-center">
+            <h3 className="mb-[12px] text-[#04c37f] text-base leading-[150%] font-normal">Testimonial</h3>
+            <p className="text-[36px] leading-[54px] font-bold text-[#0b1b2a]">Our Happy Clients Says About Me</p>
+          </div>
+        </div>
+      </div>
 
+      <div className="py-[120px] bg-[#ECF1F9]">
+        <div className="container">
+          <div className="flex flex-col lg:flex-row justify-between items-start">
+            <div className="w-[100%] lg:w-[26%] l:border-r-2 lg:border-[#E2D3CB] lg:pr-[40px]">
+              <h3 className="mb-[40px] text-[#0b1b2a] font-semibold text-[36px] leading-[43px]">
+                Contact Info
+              </h3>
+              {contactForm &&
+                contactForm?.map((info, i) => (
+                  <div
+                    key={i}
+                    className={`flex items-start gap-x-4 ${
+                      i === contactForm.length - 1 ? "mb-[0px]" : "mb-[40px]"
+                    }`}
+                  >
+                    <img src={info.image} alt="" />
+                    <div>
+                      <p className="mb-[10px] text-[#04c37f] text-[20px] leading-[30px] font-semibold">
+                        {info.label}
+                      </p>
+                      <a
+                        href={info.href}
+                        className={`text-[#3C4648] text-[18px] leading-[27px] font-normal  transition-all duration-300  ${
+                          i === contactForm.length - 1
+                            ? "cursor-auto"
+                            : "hover:text-[#04c37f]"
+                        }`}
+                      >
+                        {info.value}
+                      </a>
+                    </div>
+                  </div>
+                ))}
+            </div>
+
+            <div className="w-[100%] md:w-[74%] lg:pl-[70px]">
+              <p className="mb-[12px] text-[#04c37f] text-base leading-[150%] font-normal mt-[40px] lg:mt-[0px]">
+                Contact Us
+              </p>
+              <h3 className="mb-[35px] text-[#0b1b2a] text-[36px] leading-[43px] font-semibold">
+                Have Questions? Get in Touch!
+              </h3>
+
+              <Form />
+            </div>
+          </div>
+        </div>
+      </div>
 
       <Footer />
     </>
